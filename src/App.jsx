@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import personService from "./services/persons";
+import Notification from "./components/Notification";
 
 function App() {
   // persons state --array objects--
@@ -79,6 +80,7 @@ function App() {
       const changedId = sameNamePerson.id;
       const changedNumber = { ...sameNamePerson, number: newPhone };
 
+      //through axios persons.jsx service we update the new number
       personService
         .update(changedId, changedNumber)
         .then((returnedNumber) => {
@@ -129,6 +131,7 @@ function App() {
     <div className="App">
       <h2>Phonebook</h2>
       <hr />
+      <Notification />
       {/* search input */}
       search name:{" "}
       <input value={showSearch} onChange={handleShowSearchChange} />
@@ -149,7 +152,7 @@ function App() {
       <h2>Numbers:</h2>
       <ul>
         {whatToShow.map((element) => (
-          <p>
+          <p key={element.id}>
             {element.id} {element.name} {element.number}{" "}
             {element.id ? (
               <button onClick={() => handleDeleteClick(element.id)}>
