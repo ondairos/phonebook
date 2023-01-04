@@ -19,6 +19,8 @@ function App() {
   const [newPhone, setNewPhone] = useState("");
   // state for searching
   const [showSearch, setShowSearch] = useState("");
+  // state for error messages
+  const [errorMessage, setErrorMessage] = useState("");
 
   //handlePersonChange
   function handlePersonChange(event) {
@@ -38,7 +40,15 @@ function App() {
         .then(() => {
           // Returns the elements of an array that meet the condition specified in a callback function.
           setPersons(persons.filter((person) => person.id !== id));
-          console.log(persons);
+
+          // error message for deletion 11111111111111111111111111111111111111111111111111111111111111111111111
+          const deletedName = persons.filter(
+            (newDeletedPerson) => newDeletedPerson.id == id
+          );
+          setErrorMessage(`Deleted ${deletedName[0].name} from phonebook!`);
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
         })
         .catch((error) => {
           console.error(error);
@@ -63,7 +73,6 @@ function App() {
     const sameNamePerson = persons.find((element) => {
       return element.name.toLowerCase() === newName.toLowerCase();
     });
-
 
     // check if the number of sameName person is the same
     if (
@@ -93,7 +102,7 @@ function App() {
           setNewPhone("");
         })
         .catch((error) => console.log(error));
-    } 
+    }
 
     // create new person
     const personObject = {
@@ -108,6 +117,12 @@ function App() {
     } else {
       personService.create(personObject).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson));
+        // error message 11111111111111111111111111111111111111111111111111111
+        setErrorMessage(`Added ${personObject.name} to the phonebook`);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 5000);
+
         setNewName("");
         setNewPhone("");
       });
@@ -131,7 +146,7 @@ function App() {
     <div className="App">
       <h2>Phonebook</h2>
       <hr />
-      <Notification />
+      <Notification message={errorMessage} />
       {/* search input */}
       search name:{" "}
       <input value={showSearch} onChange={handleShowSearchChange} />

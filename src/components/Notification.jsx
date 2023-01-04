@@ -8,7 +8,7 @@ export const Notification = ({ message }) => {
   return (
     <div className="error">
       {message}
-      <p>ERROR MESSAGE HERE</p>
+      <p></p>
     </div>
   );
 };
