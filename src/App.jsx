@@ -144,7 +144,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Phonebook</h2>
+      <h2 className="main_title">Phonebook</h2>
       <hr />
       <Notification message={errorMessage} />
       {/* search input */}
