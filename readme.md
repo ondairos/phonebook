@@ -13,18 +13,17 @@ Frontend: React JS
 Backend : JSON Server (Axios Promise based HTTP client for the browser and node.js)
 
 ## Installation
+Clone the repository
 
-    Clone the repository
+    git clone https://github.com/YOUR-USERNAME/phonebook-app
 
-git clone https://github.com/YOUR-USERNAME/phonebook-app
+Install dependencies
 
-    Install dependencies
+    npm install
 
-npm install
+Start the development server
 
-    Start the development server
-
-npm start
+    npm start
 
 ## Usage
 
