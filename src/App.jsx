@@ -89,9 +89,7 @@ function App() {
           setNewPhone("");
         })
         .catch((error) => console.log(error));
-    } else {
-      return;
-    }
+    } 
 
     // create new person
     const personObject = {
