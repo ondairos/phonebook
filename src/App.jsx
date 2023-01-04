@@ -164,7 +164,7 @@ function App() {
         </div>
       </form>
       <hr />
-      <h2>Numbers:</h2>
+      <h2 className="main_numbers">Numbers:</h2>
       <ul>
         {whatToShow.map((element) => (
           <p key={element.id}>
