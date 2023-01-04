@@ -62,12 +62,14 @@ function App() {
     const sameNamePerson = persons.find((element) => {
       return element.name.toLowerCase() === newName.toLowerCase();
     });
+
+
     // check if the number of sameName person is the same
     if (
       sameNamePerson &&
-      sameNamePerson.number.toLowerCase() === newName.toLowerCase()
+      sameNamePerson.number.toLowerCase() === newPhone.toLowerCase()
     ) {
-      alert(`${sameNamePerson} already exists in the database!`);
+      alert(`${sameNamePerson.name} already exists in the database!`);
       setNewName("");
       setNewPhone("");
     } else if (sameNamePerson && sameNamePerson.number !== newPhone) {
