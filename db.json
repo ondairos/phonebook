@@ -1,3 +1,19 @@
 {
-  "persons": []
+  "persons": [
+    {
+      "id": 1,
+      "name": "Fotini Ioan",
+      "number": "1313131"
+    },
+    {
+      "id": 2,
+      "name": "Ioannis Kan",
+      "number": "213131"
+    },
+    {
+      "id": 3,
+      "name": "Lala",
+      "number": "55555"
+    }
+  ]
 }

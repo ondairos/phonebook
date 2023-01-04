@@ -51,6 +51,49 @@ function App() {
   //addName function
   function addName(event) {
     event.preventDefault();
+
+    // if fields are empty show message
+    if (!newName || !newPhone) {
+      alert("Please fill the inputs before submitting!");
+      return;
+    }
+
+    // create a sameName person in the phonebook for comparison
+    const sameNamePerson = persons.find((element) => {
+      return element.name.toLowerCase() === newName.toLowerCase();
+    });
+    // check if the number of sameName person is the same
+    if (
+      sameNamePerson &&
+      sameNamePerson.number.toLowerCase() === newName.toLowerCase()
+    ) {
+      alert(`${sameNamePerson} already exists in the database!`);
+      setNewName("");
+      setNewPhone("");
+    } else if (sameNamePerson && sameNamePerson.number !== newPhone) {
+      // else change the number in state and database
+
+      // create id and changed number person
+      const changedId = sameNamePerson.id;
+      const changedNumber = { ...sameNamePerson, number: newPhone };
+
+      personService
+        .update(changedId, changedNumber)
+        .then((returnedNumber) => {
+          setPersons(
+            persons.map((newPerson) =>
+              newPerson.id !== changedId ? newPerson : returnedNumber
+            )
+          );
+          setNewName("");
+          setNewPhone("");
+        })
+        .catch((error) => console.log(error));
+    } else {
+      return;
+    }
+
+    // create new person
     const personObject = {
       id: persons.length + 1,
       name: newName,
@@ -58,7 +101,8 @@ function App() {
     };
     // The some method will iterate through the elements of the persons array and will return true as soon as it finds an element that satisfies the given condition. If no such element is found, it will return false.
     if (persons.some((element) => element.name == personObject.name)) {
-      alert(`${personObject.name} is already in the phonebook!`);
+      // alert(`${personObject.name} is already in the phonebook!`);
+      console.log("Editing contact...");
     } else {
       personService.create(personObject).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson));
