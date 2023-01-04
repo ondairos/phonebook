@@ -2,10 +2,10 @@
 
 A phonebook app that allows you to:
 
-    View a list of names and phone numbers
-    Add new names and phone numbers
-    Search for a name
-    Delete a name and phone number
+- View a list of names and phone numbers
+- Add new names and phone numbers
+- Search for a name
+- Delete a name and phone number
 
 ## Project from the FullStackOpen course.
 
