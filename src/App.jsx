@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import personService from "./services/persons";
+import Notification from "./components/Notification";
 
 function App() {
   // persons state --array objects--
@@ -18,6 +19,8 @@ function App() {
   const [newPhone, setNewPhone] = useState("");
   // state for searching
   const [showSearch, setShowSearch] = useState("");
+  // state for error messages
+  const [errorMessage, setErrorMessage] = useState("");
 
   //handlePersonChange
   function handlePersonChange(event) {
@@ -37,7 +40,15 @@ function App() {
         .then(() => {
           // Returns the elements of an array that meet the condition specified in a callback function.
           setPersons(persons.filter((person) => person.id !== id));
-          console.log(persons);
+
+          // error message for deletion 11111111111111111111111111111111111111111111111111111111111111111111111
+          const deletedName = persons.filter(
+            (newDeletedPerson) => newDeletedPerson.id == id
+          );
+          setErrorMessage(`Deleted ${deletedName[0].name} from phonebook!`);
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
         })
         .catch((error) => {
           console.error(error);
@@ -63,7 +74,6 @@ function App() {
       return element.name.toLowerCase() === newName.toLowerCase();
     });
 
-
     // check if the number of sameName person is the same
     if (
       sameNamePerson &&
@@ -79,6 +89,7 @@ function App() {
       const changedId = sameNamePerson.id;
       const changedNumber = { ...sameNamePerson, number: newPhone };
 
+      //through axios persons.jsx service we update the new number
       personService
         .update(changedId, changedNumber)
         .then((returnedNumber) => {
@@ -91,7 +102,7 @@ function App() {
           setNewPhone("");
         })
         .catch((error) => console.log(error));
-    } 
+    }
 
     // create new person
     const personObject = {
@@ -106,6 +117,12 @@ function App() {
     } else {
       personService.create(personObject).then((returnedPerson) => {
         setPersons(persons.concat(returnedPerson));
+        // error message 11111111111111111111111111111111111111111111111111111
+        setErrorMessage(`Added ${personObject.name} to the phonebook`);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 5000);
+
         setNewName("");
         setNewPhone("");
       });
@@ -127,8 +144,9 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Phonebook</h2>
+      <h2 className="main_title">Phonebook</h2>
       <hr />
+      <Notification message={errorMessage} />
       {/* search input */}
       search name:{" "}
       <input value={showSearch} onChange={handleShowSearchChange} />
@@ -146,11 +164,11 @@ function App() {
         </div>
       </form>
       <hr />
-      <h2>Numbers:</h2>
+      <h2 className="main_numbers">Numbers:</h2>
       <ul>
         {whatToShow.map((element) => (
-          <p>
-            {element.id} {element.name} {element.number}{" "}
+          <p key={element.id}>
+            {element.name} {element.number}{" "}
             {element.id ? (
               <button onClick={() => handleDeleteClick(element.id)}>
                 Delete

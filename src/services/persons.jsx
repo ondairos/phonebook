@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/persons";
+// const baseUrl = "http://localhost:3001/api/persons";
+// in vite js you need to modify the vite.config.js file not the package.json file like react app. For proxy server
+const baseUrl = "/api/persons";
+
 
 //get
 const getAll = () => {
