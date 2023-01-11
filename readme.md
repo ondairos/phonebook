@@ -13,7 +13,7 @@ Frontend: Vite (ReactJS)
 
 Backend : Node/express/MongoDB (https://github.com/ondairos/phonebook_server)
 
-Installing
+## Installing
 
 Clone the repository:
 
@@ -27,13 +27,13 @@ Start the Vite.js development server:
 
     npm run dev
 
-Usage
+## Usage
 
 - To view all phonebook entries, navigate to http://localhost:3000/
 - To add a new entry, navigate to http://localhost:3000/new
 - To update or delete an entry, navigate to http://localhost:3000/:id (replace :id with the ID of the entry)
 
-Built With
+## Built With
 
 Vite.js - JavaScript development server for building the user interface
 Axios - HTTP client library for handling the requests
