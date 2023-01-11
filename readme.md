@@ -29,9 +29,7 @@ Start the Vite.js development server:
 
 ## Usage
 
-- To view all phonebook entries, navigate to http://localhost:3000/
-- To add a new entry, navigate to http://localhost:3000/new
-- To update or delete an entry, navigate to http://localhost:3000/:id (replace :id with the ID of the entry)
+- To view,add, delete all phonebook entries, navigate to http://localhost:5173/
 
 ## Built With
 
