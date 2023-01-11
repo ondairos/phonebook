@@ -10,6 +10,7 @@ A phonebook app that allows you to:
 ## Project from the FullStackOpen course.
 
 Frontend: Vite (ReactJS)
+
 Backend : Node/express/MongoDB (https://github.com/ondairos/phonebook_server)
 
 Installing
