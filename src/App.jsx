@@ -168,7 +168,7 @@ function App() {
       <ul>
         {whatToShow.map((element) => (
           <p key={element.id}>
-            {element.id} {element.name} {element.number}{" "}
+            {element.name} {element.number}{" "}
             {element.id ? (
               <button onClick={() => handleDeleteClick(element.id)}>
                 Delete
