@@ -9,24 +9,30 @@ A phonebook app that allows you to:
 
 ## Project from the FullStackOpen course.
 
-Frontend: React JS
-Backend : JSON Server (Axios Promise based HTTP client for the browser and node.js)
+Frontend: Vite (ReactJS)
+Backend : Node/express/MongoDB (https://github.com/ondairos/phonebook_server)
 
-## Installation
-Clone the repository
+Installing
 
-    git clone https://github.com/YOUR-USERNAME/phonebook-app
+    Clone the repository:
 
-Install dependencies
+git clone https://github.com/yourusername/phonebook-app.git
 
-    npm install
+    Install the dependencies:
 
-Start the development server
+npm install
 
-    npm start
+    Start the Vite.js development server:
 
-## Usage
+npm run dev
 
-Add, view, search, and delete names and phone numbers from the phonebook.
+Usage
 
-```
+    To view all phonebook entries, navigate to http://localhost:3000/
+    To add a new entry, navigate to http://localhost:3000/new
+    To update or delete an entry, navigate to http://localhost:3000/:id (replace :id with the ID of the entry)
+
+Built With
+
+    Vite.js - JavaScript development server for building the user interface
+    Axios - HTTP client library for handling the requests
