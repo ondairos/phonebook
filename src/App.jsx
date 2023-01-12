@@ -74,10 +74,10 @@ function App() {
       return element.name.toLowerCase() === newName.toLowerCase();
     });
 
-    // check if the number of sameName person is the same
+    // check if the number of sameName person is the same //Convert number to string for checking
     if (
       sameNamePerson &&
-      sameNamePerson.number.toLowerCase() === newPhone.toLowerCase()
+      sameNamePerson.number.toString().toLowerCase() === newPhone.toLowerCase()
     ) {
       alert(`${sameNamePerson.name} already exists in the database!`);
       setNewName("");
