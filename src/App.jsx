@@ -41,7 +41,7 @@ function App() {
           // Returns the elements of an array that meet the condition specified in a callback function.
           setPersons(persons.filter((person) => person.id !== id));
 
-          // error message for deletion 11111111111111111111111111111111111111111111111111111111111111111111111
+          // error message for deletion
           const deletedName = persons.filter(
             (newDeletedPerson) => newDeletedPerson.id == id
           );
@@ -115,17 +115,27 @@ function App() {
       // alert(`${personObject.name} is already in the phonebook!`);
       console.log("Editing contact...");
     } else {
-      personService.create(personObject).then((returnedPerson) => {
-        setPersons(persons.concat(returnedPerson));
-        // error message 11111111111111111111111111111111111111111111111111111
-        setErrorMessage(`Added ${personObject.name} to the phonebook`);
-        setTimeout(() => {
-          setErrorMessage(null);
-        }, 5000);
+      personService
+        .create(personObject)
+        .then((returnedPerson) => {
+          setPersons(persons.concat(returnedPerson));
+          // error message
+          setErrorMessage(`Added ${personObject.name} to the phonebook`);
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
 
-        setNewName("");
-        setNewPhone("");
-      });
+          setNewName("");
+          setNewPhone("");
+        })
+        // added error message
+        .catch((error) => {
+          setErrorMessage(error.response.data.error);
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
+          console.log(error.response.data.error);
+        });
     }
   }
 
